@@ -6,11 +6,12 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 
 import { fetchImg } from './js/pixabay-api';
 
-let imgset; 
+let imgset;
+let searchImgs; 
 
 const inputfield = document.querySelector('input');
 const fillForm = document.querySelector('form');
-const setGallery = document.querySelector('ul.gallery'); 
+const setGallery = document.querySelector('ul.gallery');
 
 const preloader = document.querySelector('.preloader');
 
@@ -32,9 +33,9 @@ window.onload = handleLoad;
 fillForm.addEventListener('submit', async event => {
   event.preventDefault();
   
-  const searchQuery = event.currentTarget.elements.search.value.trim(); 
+  searchImgs = event.currentTarget.elements.search.value.trim();
 
-  if (!searchQuery.length) {
+  if (!searchImgs.length) {
     iziToast.error({
       color: 'yellow',
       message: ` Please fill in the field for search query.`,
@@ -47,7 +48,7 @@ fillForm.addEventListener('submit', async event => {
   showLoader();
 
   try {
-    const images = await fetchImg(searchQuery);
+    const images = await fetchImg(searchImgs);
     imgset = images.hits;
 
     if (!imgset.length) {
@@ -70,4 +71,5 @@ fillForm.addEventListener('submit', async event => {
     handleLoad();
   }
 });
+
 
