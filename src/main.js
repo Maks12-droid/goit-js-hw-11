@@ -11,12 +11,10 @@ export const setGallery = document.querySelector('ul.gallery');
 export let imgset;
 export let searchImgs;
 
-
 const inputfield = document.querySelector('input');
 const fillForm = document.querySelector('form');
 
 const preloader = document.querySelector('.preloader');
-
 
 const showLoader = () => {
   preloader.style.display = 'flex';
@@ -34,11 +32,10 @@ fillForm.addEventListener('submit', async event => {
   event.preventDefault(); 
   
   const formData = new FormData(event.currentTarget);
-  const searchImgs = formData.get('search'); 
+  searchImgs = formData.get('search'); 
 
   try {
     const images = await fetchImg(searchImgs);
-    imgset = images.hits;
 
     if (!imgset.length) {
       iziToast.error({
@@ -56,5 +53,7 @@ fillForm.addEventListener('submit', async event => {
       position: 'topRight',
     });
   } finally {
+    // hideLoader();
+    // handleLoad();
   }
 });
