@@ -11,15 +11,11 @@ export const setGallery = document.querySelector('ul.gallery');
 export let imgset;
 export let searchImgs;
 
-// +++++++++++++++++++
-
 const inputfield = document.querySelector('input');
 const inputBtn = document.querySelector('button');
 const fillForm = document.querySelector('form');
 
 const preloader = document.querySelector('.preloader');
-
-// loader begin==============
 
 const showLoader = () => {
   preloader.style.display = 'flex';
@@ -33,14 +29,11 @@ const handleLoad = () => {
 };
 
 window.onload = handleLoad;
-// +++++++++++++++++++
-// Begin ++++++++++++++++
+
 inputBtn.addEventListener('click', async event => {
   event.preventDefault();
 
   searchImgs = inputfield.value.trim();
-
-  // control correct fill input
 
   if (!searchImgs.length) {
     iziToast.error({
