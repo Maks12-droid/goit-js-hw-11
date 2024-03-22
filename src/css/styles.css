@@ -8,8 +8,8 @@
   line-height: 24px;
   font-weight: 400;
 
-  color: #242424;
-  background-color: rgba(255, 255, 255, 0.87);
+  color: #696969;
+  background-color: rgba(189, 188, 188, 0.87);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -23,7 +23,7 @@ body {
   display: block;
   box-sizing: border-box;
   background-color: #FFFFFF;
-  color: #212121;
+  color: #686666;
   margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
@@ -42,15 +42,15 @@ input {
   border-radius: 4px;
   font-size: 16px;
   font-weight: 400;
-  color: #808080;
-  border: 1px solid #808080;
+  color: #464444;
+  border: 1px solid #414040;
 
 }
 
 button {
   Padding: 8px 16px 8px 16px;
   border-radius: 8px;
-  background-color: #4E75FF;
+  background-color: #2d428f;
   color: #FFFFFF;
   font-size: 16px;
   font-weight: 500;
@@ -67,7 +67,7 @@ button {
 
 .img-blok {
   width: 360px;
-  border: #808080 solid 1px;
+  border: #424242 solid 1px;
   background: 5px;
 
 
@@ -103,7 +103,7 @@ img {
   top: 0;
   right: 0;
   bottom: 0;
-  background: #e0e0e09e;
+  background: #9796969e;
   z-index: 1001;
 }
 
@@ -123,7 +123,7 @@ img {
   position: absolute;
   display: inline-block;
   top: 0;
-  background-color: #337ab7;
+  background-color: #183957;
   border-radius: 100%;
   width: 35px;
   height: 35px;
