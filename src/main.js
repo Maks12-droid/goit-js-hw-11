@@ -1,3 +1,7 @@
+export let searchImgs;
+
+import { searchImgs } from '../main.js';
+
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
@@ -7,12 +11,10 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 import { fetchImg } from './js/pixabay-api';
 
 let imgset;
-let searchImgs;
 
 const inputfield = document.querySelector('input');
 const fillForm = document.querySelector('form');
-const setGallery = document.querySelector('ul.gallery');
-
+const setGallery = document.querySelector('ul.gallery'); 
 const preloader = document.querySelector('.preloader');
 
 const showLoader = () => {
@@ -58,7 +60,7 @@ fillForm.addEventListener('submit', async event => {
         position: 'topRight',
       });
     } else {
-      renderImgs(images); 
+    
     }
   } catch (error) {
     iziToast.error({
