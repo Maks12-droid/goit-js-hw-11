@@ -4,9 +4,13 @@ import 'izitoast/dist/css/iziToast.min.css';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
-import { renderImgs } from './js/render-functions';
 import { fetchImg } from './js/pixabay-api';
+import { setGallery } from './main.js'; 
 
+let imgset;
+let searchImgs;
+
+const inputfield = document.querySelector('input');
 const fillForm = document.querySelector('form');
 
 const preloader = document.querySelector('.preloader');
@@ -29,10 +33,10 @@ window.onload = handleLoad;
 fillForm.addEventListener('submit', async event => {
   event.preventDefault();
 
-  const inputfield = event.currentTarget.querySelector('input');
-  const searchImgs = inputfield.value.trim();
+  const formData = new FormData(event.currentTarget);
+  searchImgs = formData.get('search');
 
-  if (!searchImgs.length) {
+  if (!searchImgs.trim()) {
     iziToast.error({
       color: 'yellow',
       message: ` Please fill in the field for search query.`,
@@ -46,7 +50,7 @@ fillForm.addEventListener('submit', async event => {
 
   try {
     const images = await fetchImg(searchImgs);
-    const imgset = images.hits;
+    imgset = images.hits;
 
     if (!imgset.length) {
       iziToast.error({
@@ -55,7 +59,6 @@ fillForm.addEventListener('submit', async event => {
         position: 'topRight',
       });
     } else {
-      renderImgs(images);
     }
   } catch (error) {
     iziToast.error({
