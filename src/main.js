@@ -11,7 +11,7 @@ let searchImgs;
 
 const inputfield = document.querySelector('input');
 const fillForm = document.querySelector('form');
-const setGallery = document.querySelector('ul.gallery'); 
+const setGallery = document.querySelector('ul.gallery');
 
 const preloader = document.querySelector('.preloader');
 
@@ -58,7 +58,7 @@ fillForm.addEventListener('submit', async event => {
         position: 'topRight',
       });
     } else {
-
+      renderImgs(images); 
     }
   } catch (error) {
     iziToast.error({
@@ -71,3 +71,4 @@ fillForm.addEventListener('submit', async event => {
     handleLoad();
   }
 });
+
