@@ -4,10 +4,14 @@ import 'izitoast/dist/css/iziToast.min.css';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
-import { renderImgs } from './js/render-functions';
 import { fetchImg } from './js/pixabay-api';
 
-const fillForm = document.getElementById('searchForm');
+let imgset;
+let searchImgs;
+
+const inputfield = document.querySelector('input');
+const fillForm = document.querySelector('form');
+const setGallery = document.querySelector('ul.gallery'); 
 
 const preloader = document.querySelector('.preloader');
 
@@ -27,17 +31,17 @@ const handleLoad = () => {
 window.onload = handleLoad;
 
 fillForm.addEventListener('submit', async event => {
-  event.preventDefault(); 
+  event.preventDefault();
   
-  const formData = new FormData(event.currentTarget);
-  const searchImgs = formData.get('search'); 
-  
-  if (!searchImgs.trim()) {
+  searchImgs = event.currentTarget.elements.search.value.trim(); 
+
+  if (!searchImgs.length) {
     iziToast.error({
       color: 'yellow',
       message: ` Please fill in the field for search query.`,
       position: 'topRight',
     });
+    setGallery.innerHTML = '';
     return;
   }
 
@@ -45,7 +49,7 @@ fillForm.addEventListener('submit', async event => {
 
   try {
     const images = await fetchImg(searchImgs);
-    const imgset = images.hits;
+    imgset = images.hits;
 
     if (!imgset.length) {
       iziToast.error({
@@ -54,7 +58,7 @@ fillForm.addEventListener('submit', async event => {
         position: 'topRight',
       });
     } else {
-      renderImgs(images);
+
     }
   } catch (error) {
     iziToast.error({
@@ -67,4 +71,3 @@ fillForm.addEventListener('submit', async event => {
     handleLoad();
   }
 });
-
