@@ -6,7 +6,7 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 
 import { fetchImg } from './js/pixabay-api';
 
-let searchImgs; // Виправлено: оголошено один раз
+let searchImgs;
 
 const inputfield = document.querySelector('input');
 const fillForm = document.querySelector('form');
@@ -32,9 +32,9 @@ window.onload = handleLoad;
 fillForm.addEventListener('submit', async event => {
   event.preventDefault();
 
-  searchImgs = event.currentTarget.elements.search.value.trim(); // Виправлено: використано глобальну змінну
+  searchImgs = event.currentTarget.elements.search.value.trim(); 
 
-  if (!searchImgs.length) {
+  if (!searchImgs) { 
     iziToast.error({
       color: 'yellow',
       message: ` Please fill in the field for search query.`,
