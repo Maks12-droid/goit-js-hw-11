@@ -4,8 +4,8 @@ import 'izitoast/dist/css/iziToast.min.css';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
-import { setGallery } from './main';
-import { imgset } from './main';
+import { setGallery } from './src/main';
+import { imgset } from './src/main';
 
 export function renderImgs(images) {
   setGallery.innerHTML = '';
