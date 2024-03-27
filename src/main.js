@@ -32,7 +32,20 @@ window.onload = handleLoad;
 fillForm.addEventListener('submit', async event => {
   event.preventDefault();
 
-  searchImgs = event.currentTarget.querySelector('input[name="search"]').value.trim();
+  const input = inputfield.value.trim();
+  
+  if (input === '') {
+    iziToast.show({
+      message: 'Please complete the field!',
+      theme: 'dark',
+      progressBarColor: '#FFFFFF',
+      color: '#EF4040',
+      position: 'topRight',
+    });
+    return;
+  }
+
+  searchImgs = input;
 
   showLoader();
 
@@ -63,5 +76,3 @@ fillForm.addEventListener('submit', async event => {
 });
 
 export { searchImgs };
-
-
