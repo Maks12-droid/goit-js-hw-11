@@ -32,7 +32,7 @@ window.onload = handleLoad;
 fillForm.addEventListener('submit', async event => {
   event.preventDefault();
 
-  searchImgs = event.currentTarget.elements.search.value.trim();
+  searchImgs = event.currentTarget.querySelector('input[name="search"]').value.trim();
 
   showLoader();
 
