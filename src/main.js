@@ -2,6 +2,7 @@ import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
+import { renderImgs } from './render-functions'; 
 
 let searchImgs = '';
 
@@ -55,7 +56,7 @@ fillForm.addEventListener('submit', async event => {
         position: 'topRight',
       });
     } else {
-      renderImgs(imgset);
+      renderImgs(imgset); 
     }
   } catch (error) {
     console.error(error);
