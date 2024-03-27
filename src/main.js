@@ -6,7 +6,7 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 
 import { fetchImg } from './js/pixabay-api';
 
-let searchImgs = ''; 
+let searchImgs = '';
 
 const inputfield = document.querySelector('input');
 const fillForm = document.querySelector('form');
@@ -50,6 +50,7 @@ fillForm.addEventListener('submit', async event => {
       renderImgs(imgset);
     }
   } catch (error) {
+    console.error(error); 
     iziToast.error({
       color: 'red',
       message: `:x: Sorry, there was a mistake. Please try again!`,
@@ -61,5 +62,6 @@ fillForm.addEventListener('submit', async event => {
   }
 });
 
-export { searchImgs }; 
+export { searchImgs };
+
 
