@@ -4,14 +4,12 @@ import 'izitoast/dist/css/iziToast.min.css';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
-import { fetchImg } from './js/pixabay-api';
-import { setGallery, imgset } from '../main'; 
+import { fetchImg, setGallery, imgset } from '../main'; 
 
 let searchImgs = '';
 
 const inputfield = document.querySelector('input');
 const fillForm = document.querySelector('form');
-const setGallery = document.querySelector('ul.gallery');
 
 const preloader = document.querySelector('.preloader');
 
