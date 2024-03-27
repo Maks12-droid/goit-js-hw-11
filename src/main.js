@@ -5,6 +5,7 @@ import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
 import { fetchImg } from './js/pixabay-api';
+import { renderImgs } from './js/render-functions'; 
 
 let searchImgs = '';
 
@@ -62,7 +63,7 @@ fillForm.addEventListener('submit', async event => {
         position: 'topRight',
       });
     } else {
-      renderImgs(imgset);
+      renderImgs(imgset); 
     }
   } catch (error) {
     console.error(error); 
