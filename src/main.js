@@ -5,8 +5,7 @@ import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
 import { fetchImg } from './js/pixabay-api';
-import { renderImgs } from './js/render-functions'; 
-
+import { setGallery, imgset } from '../main'; 
 let searchImgs = '';
 
 const inputfield = document.querySelector('input');
