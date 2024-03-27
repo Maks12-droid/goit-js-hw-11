@@ -1,32 +1,9 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
-
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
-import { fetchImg, setGallery, imgset } from './main'; 
-
-let searchImgs = '';
-
-const inputfield = document.querySelector('input');
-const fillForm = document.querySelector('form');
-
-const preloader = document.querySelector('.preloader');
-
-const showLoader = () => {
-  preloader.style.display = 'flex';
-};
-
-const hideLoader = () => {
-  preloader.style.display = 'none';
-};
-
-const handleLoad = () => {
-  document.body.classList.add('loaded');
-  document.body.classList.remove('loaded_hiding');
-};
-
-window.onload = handleLoad;
+import { fetchImg } from '../main'; 
 
 fillForm.addEventListener('submit', async event => {
   event.preventDefault();
@@ -52,7 +29,7 @@ fillForm.addEventListener('submit', async event => {
 
   try {
     const images = await fetchImg(searchImgs);
-    const imgset = images.hits;
+    const imgset = images;
 
     if (!imgset.length) {
       iziToast.error({
