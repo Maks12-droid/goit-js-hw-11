@@ -3,14 +3,31 @@ import 'izitoast/dist/css/iziToast.min.css';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
-import { fetchImg } from '../main'; 
+let searchImgs = '';
+
+const inputfield = document.querySelector('input');
+const fillForm = document.querySelector('form');
+const preloader = document.querySelector('.preloader');
+
+const showLoader = () => {
+  preloader.style.display = 'flex';
+};
+
+const hideLoader = () => {
+  preloader.style.display = 'none';
+};
+
+const handleLoad = () => {
+  document.body.classList.add('loaded');
+  document.body.classList.remove('loaded_hiding');
+};
+
+window.onload = handleLoad;
 
 fillForm.addEventListener('submit', async event => {
   event.preventDefault();
 
   const input = inputfield.value.trim();
-  
-  console.log('Input value:', input); 
 
   if (input === '') {
     iziToast.show({
@@ -38,10 +55,10 @@ fillForm.addEventListener('submit', async event => {
         position: 'topRight',
       });
     } else {
-      renderImgs(imgset); 
+      renderImgs(imgset);
     }
   } catch (error) {
-    console.error(error); 
+    console.error(error);
     iziToast.error({
       color: 'red',
       message: `:x: Sorry, there was a mistake. Please try again!`,
