@@ -11,6 +11,7 @@ let searchImgs = '';
 
 const inputfield = document.querySelector('input');
 const fillForm = document.querySelector('form');
+const setGallery = document.querySelector('ul.gallery');
 
 const preloader = document.querySelector('.preloader');
 
@@ -35,6 +36,7 @@ fillForm.addEventListener('submit', async event => {
   const input = inputfield.value.trim();
   
   console.log('Input value:', input); 
+
   if (input === '') {
     iziToast.show({
       message: 'Please complete the field!',
