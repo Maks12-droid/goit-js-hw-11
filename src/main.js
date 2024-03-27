@@ -34,6 +34,8 @@ fillForm.addEventListener('submit', async event => {
 
   const input = inputfield.value.trim();
   
+  console.log('Input value:', input); 
+
   if (input === '') {
     iziToast.show({
       message: 'Please complete the field!',
