@@ -4,13 +4,12 @@ import 'izitoast/dist/css/iziToast.min.css';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
-import { setGallery } from './main';
-import { imgset } from './main';
-
 export function renderImgs(images) {
+  const setGallery = document.querySelector('ul.gallery'); 
+
   setGallery.innerHTML = '';
 
-  const imgGallery = imgset
+  const imgGallery = images 
     .map(
       image => `<li class="img-blok">
         <a href="${image.largeImageURL}">     
