@@ -2,10 +2,10 @@ import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
-import { renderImgs } from './js/render-functions';
 import { fetchImg } from './js/pixabay-api.js';
 
 let searchImgs = '';
+let lightbox;
 
 const inputfield = document.querySelector('input');
 const fillForm = document.querySelector('form');
@@ -22,6 +22,7 @@ const hideLoader = () => {
 const handleLoad = () => {
   document.body.classList.add('loaded');
   document.body.classList.remove('loaded_hiding');
+  lightbox = new SimpleLightbox('.gallery a');
 };
 
 window.onload = handleLoad;
@@ -34,7 +35,18 @@ fillForm.addEventListener('submit', event => {
     fetchImg(input)
       .then((photos) => {
         if (photos.hits.length > 0) {
-          renderImgs(photos.hits);
+          const galleryHTML = photos.hits.map(photo => `<a href="${photo.largeImageURL}"><img src="${photo.webformatURL}" alt="${photo.tags}" /></a>`).join('');
+          document.querySelector('.gallery').innerHTML = galleryHTML;
+          lightbox.refresh();
+        } else {
+          document.querySelector('.gallery').innerHTML = '';
+          iziToast.show({
+            message: 'No images found!',
+            theme: 'dark',
+            progressBarColor: '#FFFFFF',
+            color: '#EF4040',
+            position: 'topRight',
+          });
         }
         hideLoader(); 
       })
