@@ -33,7 +33,9 @@ fillForm.addEventListener('submit', event => {
     showLoader(); 
     fetchImg(input)
       .then((photos) => {
-        renderImgs(photos.hits);
+        if (photos.hits.length > 0) {
+          renderImgs(photos.hits);
+        }
         hideLoader(); 
       })
       .catch((error) => {
