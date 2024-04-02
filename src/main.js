@@ -74,3 +74,4 @@ fillForm.addEventListener('submit', event => {
 });
 
 export { searchImgs };
+
