@@ -1,5 +1,9 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
+import { fetchImg } from './js/pixabay-api.js'; 
+
+let searchImgs = '';
+let lightbox;
 
 const inputfield = document.querySelector('input');
 const fillForm = document.querySelector('form');
@@ -54,6 +58,7 @@ fillForm.addEventListener('submit', event => {
           position: 'topRight',
         });
       });
+    fillForm.reset();
   } else {
     iziToast.show({
       message: 'Please complete the field!',
@@ -64,3 +69,6 @@ fillForm.addEventListener('submit', event => {
     });
   }
 });
+
+export { searchImgs };
+
