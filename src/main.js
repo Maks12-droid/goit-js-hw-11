@@ -1,10 +1,5 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
-import SimpleLightbox from 'simplelightbox';
-import { fetchImg } from './js/pixabay-api.js';
-
-let searchImgs = '';
-let lightbox;
 
 const inputfield = document.querySelector('input');
 const fillForm = document.querySelector('form');
@@ -35,11 +30,7 @@ fillForm.addEventListener('submit', event => {
         if (photos.hits.length > 0) {
           const galleryHTML = photos.hits.map(photo => `<a href="${photo.largeImageURL}"><img src="${photo.webformatURL}" alt="${photo.tags}" /></a>`).join('');
           document.querySelector('.gallery').innerHTML = galleryHTML;
-          if (!lightbox) {
-            lightbox = new SimpleLightbox('.gallery a');
-          } else {
-            lightbox.refresh();
-          }
+          lightbox.refresh();
         } else {
           document.querySelector('.gallery').innerHTML = '';
           iziToast.show({
@@ -63,7 +54,6 @@ fillForm.addEventListener('submit', event => {
           position: 'topRight',
         });
       });
-    fillForm.reset();
   } else {
     iziToast.show({
       message: 'Please complete the field!',
@@ -74,5 +64,3 @@ fillForm.addEventListener('submit', event => {
     });
   }
 });
-
-export { searchImgs };
