@@ -3,11 +3,11 @@ import 'izitoast/dist/css/iziToast.min.css';
 import { fetchImg } from './js/pixabay-api.js'; 
 
 let searchImgs = '';
-let lightbox;
 
 const inputfield = document.querySelector('input');
 const fillForm = document.querySelector('form');
 const preloader = document.querySelector('.preloader');
+const gallery = document.querySelector('.gallery'); // Додано посилання на елемент галереї
 
 const showLoader = () => {
   preloader.style.display = 'flex';
@@ -24,6 +24,9 @@ const handleLoad = () => {
 
 window.onload = handleLoad;
 
+// Ініціалізація SimpleLightbox
+let lightbox = new SimpleLightbox('.gallery a');
+
 fillForm.addEventListener('submit', event => {
   event.preventDefault();
   const input = inputfield.value.trim();
@@ -33,10 +36,10 @@ fillForm.addEventListener('submit', event => {
       .then((photos) => {
         if (photos.hits.length > 0) {
           const galleryHTML = photos.hits.map(photo => `<a href="${photo.largeImageURL}"><img src="${photo.webformatURL}" alt="${photo.tags}" /></a>`).join('');
-          document.querySelector('.gallery').innerHTML = galleryHTML;
-          lightbox.refresh();
+          gallery.innerHTML = galleryHTML; 
+          lightbox.refresh(); 
         } else {
-          document.querySelector('.gallery').innerHTML = '';
+          gallery.innerHTML = '';
           iziToast.show({
             message: 'No images found!',
             theme: 'dark',
@@ -71,4 +74,5 @@ fillForm.addEventListener('submit', event => {
 });
 
 export { searchImgs };
+
 
