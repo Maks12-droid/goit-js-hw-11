@@ -1,5 +1,7 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
+import SimpleLightbox from 'simplelightbox'; // Додано імпорт бібліотеки SimpleLightbox
+import 'simplelightbox/dist/simple-lightbox.min.css';
 import { fetchImg } from './js/pixabay-api.js'; 
 
 let searchImgs = '';
@@ -7,7 +9,7 @@ let searchImgs = '';
 const inputfield = document.querySelector('input');
 const fillForm = document.querySelector('form');
 const preloader = document.querySelector('.preloader');
-const gallery = document.querySelector('.gallery'); // Додано посилання на елемент галереї
+const gallery = document.querySelector('.gallery');
 
 const showLoader = () => {
   preloader.style.display = 'flex';
@@ -36,8 +38,8 @@ fillForm.addEventListener('submit', event => {
       .then((photos) => {
         if (photos.hits.length > 0) {
           const galleryHTML = photos.hits.map(photo => `<a href="${photo.largeImageURL}"><img src="${photo.webformatURL}" alt="${photo.tags}" /></a>`).join('');
-          gallery.innerHTML = galleryHTML; 
-          lightbox.refresh(); 
+          gallery.innerHTML = galleryHTML;
+          lightbox.refresh();
         } else {
           gallery.innerHTML = '';
           iziToast.show({
@@ -74,5 +76,6 @@ fillForm.addEventListener('submit', event => {
 });
 
 export { searchImgs };
+
 
 
